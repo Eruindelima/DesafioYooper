@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Olá!! deseja ver todos os contratos ? clique no botão abaixo') }}</br>
+                    <a href="/clientes">Ver todos contratos</a>
                 </div>
             </div>
         </div>

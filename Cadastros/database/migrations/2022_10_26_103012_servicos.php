@@ -13,20 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('servicos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_user');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('telefone');
-            $table->string('nome_empresa');
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-            
+            $table->foreign('id_user')->references('users')->on('id');
+            $table->timestamps();  
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('servicos');
     }
 };
