@@ -10,22 +10,21 @@ class ClientesController extends Controller
 {
     public function index()
     {
-        $clientes = Cliente::query()
-        ->select('cliente.*', 'servicos.servico')
-        ->join('servicos', 'servicos.cliente_id', '=', 'cliente.id')
-        ->get();
+        $clientes = Cliente::with('servicos')->get();
         
-        return view('clientes', ['clientes'=>$clientes]);
-    }
-
-    public function details() 
-    {
+        return view('listar_clientes', ['clientes'=>$clientes]);
     }
 
     public function create()
     {
         return view('criar_cliente');
     }
+
+    public function details() 
+    {
+    }
+
+    
 
     public function edit()
     {

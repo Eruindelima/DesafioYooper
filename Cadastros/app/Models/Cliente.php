@@ -18,7 +18,7 @@ class Cliente extends Model
         'nome_empresa',
     ];
 
-    public function sevicos()
+    public function servicos()
     {
         return $this->hasMany(Servicos::class);
     }
