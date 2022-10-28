@@ -18,15 +18,9 @@ class ClientesController extends Controller
         return view('clientes', ['clientes'=>$clientes]);
     }
 
-    // public function details($id) 
-    // {
-    //     $details = Cliente::query()
-    //     ->select('cliente.*', 'servicos.servico')
-    //     ->join('servicos', 'servicos.cliente_id', '=', 'cliente.id')
-    //     ->get();
-
-    //     return view('/clientes/cliente', ['clientes'=>$clientes]);
-    // }
+    public function details() 
+    {
+    }
 
     public function create()
     {
@@ -38,8 +32,18 @@ class ClientesController extends Controller
         return view('editar_cliente');
     }
 
-    public function destroy()
+    public function update()
     {
         
     }
+
+    // public function delete($id)
+    // {
+    //     $cliente = Cliente::find($id);
+
+    //     if($cliente->delete()) {
+    //         return redirect()->route('cliente');
+    //     }
+        
+    // }
 }
