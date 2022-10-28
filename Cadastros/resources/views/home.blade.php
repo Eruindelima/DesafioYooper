@@ -15,7 +15,9 @@
                     @endif
 
                     {{ __('Olá!! deseja ver todos os contratos ? clique no botão abaixo') }}</br>
-                    <a href="/clientes">Ver todos contratos</a>
+                    <a href="/clientes">Ver todos contratos</a></br>
+                    {{ __('Caso queira cadastrar um novo cliente clique no botão abaixo') }}</br>
+                    <a href="/criar_cliente">Cadastrar novo cliente</a>
                 </div>
             </div>
         </div>

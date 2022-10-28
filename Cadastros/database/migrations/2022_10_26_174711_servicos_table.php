@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('servicos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
-            $table->string('name');
-            $table->foreign('id_user')->references('users')->on('id');
-            $table->timestamps();  
+            $table->unsignedBigInteger('cliente_id');
+            $table->string('servico');
+            $table->foreign('cliente_id')->references('id')->on('cliente');
+            $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *

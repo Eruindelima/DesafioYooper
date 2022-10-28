@@ -20,8 +20,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/clientes', [App\Http\Controllers\HomeController::class, 'show'])->name('clientes');
-
-Route::get('/clientes/cliente', [App\Http\Controllers\HomeController::class, 'details'])->name('cliente');
-
-Route::get('/clentes/cliente/editar_cliente', [App\Http\Controllers\HomeController::class, 'edit'])->name('editar_cliente');
+Route::get('/clientes', [App\Http\Controllers\ClientesController::class, 'index'])->name('clientes');
+Route::get('/clientes/cliente', [App\Http\Controllers\ClientesController::class, 'details'])->name('detalhe_cliente');
+Route::get('/criar_cliente', [App\Http\Controllers\ClientesController::class, 'create'])->name('criar_cliente');
+Route::get('/clientes/cliente/editar_cliente', [App\Http\Controllers\ClientesController::class, 'edit'])->name('editar_cliente');
