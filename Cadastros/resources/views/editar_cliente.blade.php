@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header " style="display: flex;justify-content: space-between;">
-                    <h4>{{ __('Cadastrar Novo Cliente') }} </h4>
+                    <h4>{{ __('Editar Cliente') }} </h4>
                 </div>
                 <div class="container">
                     <form method="POST" action="{{route('atualizar_cliente', ['id' => $cliente->id])}}">

@@ -28,3 +28,4 @@ Route::group(['prefix' => 'cliente', 'middleware' => 'auth'], function () {
     Route::post('{id}', [App\Http\Controllers\ClientesController::class, 'update'])->name('atualizar_cliente');
     Route::get('/delete/{id}', [App\Http\Controllers\ClientesController::class, 'delete'])->name('deletar_cliente');
 });
+
