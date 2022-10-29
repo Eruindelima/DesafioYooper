@@ -20,7 +20,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'cliente'], function () {
+Route::group(['prefix' => 'cliente', 'middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\ClientesController::class, 'index'])->name('listar_clientes');
     Route::get('/novo', [App\Http\Controllers\ClientesController::class, 'create'])->name('criar_cliente');
     Route::post('/salvar', [App\Http\Controllers\ClientesController::class, 'store'])->name('salvar_cliente');

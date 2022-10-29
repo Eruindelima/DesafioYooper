@@ -91,7 +91,7 @@ class ClientesController extends Controller
         
     }
 
-    public function delete( $id)
+    public function delete($id)
     {
         $cliente = Cliente::find($id);
         

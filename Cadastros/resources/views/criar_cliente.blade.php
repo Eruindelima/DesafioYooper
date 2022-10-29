@@ -13,22 +13,22 @@
 
                         <div class="form-group my-3">
                             <label for="inputName">Nome</label>
-                            <input type="text" id="inputName" name="name" class="form-control" value="{{!empty($cliente->name) ? $cliente->name : old('name')}}">
+                            <input type="text" id="inputName" name="name" class="form-control" value="{{!empty($cliente->name) ? $cliente->name : old('name')}}" required>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="inputEmail">E-mail</label>
-                            <input type="text" id="inputEmail" name="email" class="form-control" value="{{!empty($cliente->email) ? $cliente->email : old('email')}}">
+                            <input type="text" id="inputEmail" name="email" class="form-control" value="{{!empty($cliente->email) ? $cliente->email : old('email')}}" required>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="inputTelefone">Telefone</label>
-                            <input type="text" id="inputTelefone" name="telefone" class="form-control" value="{{!empty($cliente->telefone) ? $cliente->telefone : old('telefone')}}">
+                            <input type="text" id="inputTelefone" name="telefone" class="form-control" value="{{!empty($cliente->telefone) ? $cliente->telefone : old('telefone')}}" required>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="inputNomeEmpresa">Nome da Empresa</label>
-                            <input type="text" id="inputNomeEmpresa" name="nome_empresa" class="form-control" value="{{!empty($cliente->nome_empresa) ? $cliente->nome_empresa : old('nome_empresa')}}">
+                            <input type="text" id="inputNomeEmpresa" name="nome_empresa" class="form-control" value="{{!empty($cliente->nome_empresa) ? $cliente->nome_empresa : old('nome_empresa')}}" required>
                         </div>
 
                         <div class="service-checkbox-list">
