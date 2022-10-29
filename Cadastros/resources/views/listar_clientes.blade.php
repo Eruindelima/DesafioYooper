@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+    @if ($message = Session::get('mensagem'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{ $message }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
     <div class="row justify-content-center">
         <div class="col-md-8"> 
             <div class="card"> 
@@ -27,7 +33,7 @@
                                             </p>
                                         @endif
                                         <div style="display: grid;">
-                                            <a href="/clientes/cliente" class="card-link btn btn-info">Editar cliente</a>
+                                            <a href="{{route('editar_cliente', ['id' => $cliente->id])}}" class="card-link btn btn-info">Editar cliente</a>
                                         </div>
                                     </div>
                                 </div>

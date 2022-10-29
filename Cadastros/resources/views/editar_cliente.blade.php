@@ -1,79 +1,61 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Editando cliente') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                <div class="card-header " style="display: flex;justify-content: space-between;">
+                    <h4>{{ __('Cadastrar Novo Cliente') }} </h4>
+                </div>
+                <div class="container">
+                    <form method="POST" action="{{route('atualizar_cliente', ['id' => $cliente->id])}}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nome') }}</label>
+                        <div class="form-group my-3">
+                            <label for="inputName">Nome</label>
+                            <input type="text" id="inputName" name="name" class="form-control" value="{{!empty($cliente->name) ? $cliente->name : old('name')}}">
+                        </div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <div class="form-group mb-3">
+                            <label for="inputEmail">E-mail</label>
+                            <input type="text" id="inputEmail" name="email" class="form-control" value="{{!empty($cliente->email) ? $cliente->email : old('email')}}">
+                        </div>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="form-group mb-3">
+                            <label for="inputTelefone">Telefone</label>
+                            <input type="text" id="inputTelefone" name="telefone" class="form-control" value="{{!empty($cliente->telefone) ? $cliente->telefone : old('telefone')}}">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="inputNomeEmpresa">Nome da Empresa</label>
+                            <input type="text" id="inputNomeEmpresa" name="nome_empresa" class="form-control" value="{{!empty($cliente->nome_empresa) ? $cliente->nome_empresa : old('nome_empresa')}}">
+                        </div>
+
+                        <div class="service-checkbox-list">
+                            <div class="form-group mb-3">
+                                <label for="inputSocialMedia">Social Media</label>
+                                <input type="checkbox" id="inputSocialMedia" name="servicos[]" value="Social Media" {{in_array('Social Media', $servicos) ? 'checked' : ''}}/>
+                            </div>
+
+                            <div class="form-group mb-3 mx-4">
+                                <label for="inputCRM">CRM</label>
+                                <input type="checkbox" id="inputCRM" name="servicos[]" value="CRM" {{in_array('CRM', $servicos) ? 'checked' : ''}} />
+                            </div>
+
+                            <div class="form-group mb-3 mx-2">
+                                <label for="inputMidia">Mídia</label>
+                                <input type="checkbox" id="inputMidia" name="servicos[]" value="Mídia" {{in_array('Mídia', $servicos) ? 'checked' : ''}}/>
+                            </div>
+
+                            <div class="form-group mb-3 mx-2">
+                                <label for="inputSEO">SEO</label>
+                                <input type="checkbox" id="inputSEO" name="servicos[]" value="SEO" {{in_array('SEO', $servicos) ? 'checked' : ''}}/>
                             </div>
                         </div>
-                        
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="telefone" class="col-md-4 col-form-label text-md-end">{{ __('Telefone') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="telefone" type="text" class="form-control @error('telefone') is-invalid @enderror" name="telefone" value="{{ old('telefone') }}" required autocomplete="name" placeholder="(99) 9.9999-9999" autofocus>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="empresa" class="col-md-4 col-form-label text-md-end">{{ __('Nome da empresa') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="nome_empresa" type="text" class="form-control @error('nome_empresa') is-invalid @enderror" name="nome_empresa" value="{{ old('nome_empresa') }}" required autocomplete="name"autofocus>
-                            </div>
-                        </div>
-                        <!-- <div class="row mb-3">
-                            <label for="servicos" class="col-md-4 col-form-label text-md-end">{{ __('Serviços') }}</label>
-                            <div class="col-md-6">
-                            <input class="form-check-input" type="checkbox" id="servicos" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">&nbsp Social Media</label></br>
-                            <input class="form-check-input" type="checkbox" id="servicos" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">&nbsp CRM</label></br>
-                            <input class="form-check-input" type="checkbox" id="servicos" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">&nbsp Mídia</label></br>
-                            <input class="form-check-input" type="checkbox" id="servicos" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">&nbsp SEO</label></br>
-                            </div>
-                        </div>  -->
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Editar') }}
-                                </button>
-                            </div>
-                        <a href="/clientes" class="card-link">Voltar para clientes</a>
+                        <div class="form-group my-5">
+                            <button class="btn btn-primary" type="submit">Salvar</button>
+                            <button class="btn btn-danger" type="button" onclick="deletePost('/cliente/delete/10')">Excluir Cliente</button>
                         </div>
                     </form>
                 </div>
@@ -82,3 +64,15 @@
     </div>
 </div>
 @endsection
+
+
+<script>
+    function deletePost(url) {
+        console.log(url);
+        var ask = window.confirm("Você tem certeza que quer excluir este cliente ?");
+    
+        if (ask) {
+            window.location.href = url;
+        }
+    }
+    </script>

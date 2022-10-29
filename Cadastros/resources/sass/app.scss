@@ -21,3 +21,11 @@
     flex-wrap: wrap;
     align-content: center;
 }
+
+.service-checkbox-list {
+    display: flex;
+
+    input{
+        margin-left: 5px;
+    }
+}

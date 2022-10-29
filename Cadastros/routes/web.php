@@ -23,6 +23,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix' => 'cliente'], function () {
     Route::get('/', [App\Http\Controllers\ClientesController::class, 'index'])->name('listar_clientes');
     Route::get('/novo', [App\Http\Controllers\ClientesController::class, 'create'])->name('criar_cliente');
-    Route::get('{id}', [App\Http\Controllers\ClientesController::class, 'details'])->name('detalhe_cliente');
-    //Route::get('/clientes/cliente/editar_cliente', [App\Http\Controllers\ClientesController::class, 'edit'])->name('editar_cliente');
+    Route::post('/salvar', [App\Http\Controllers\ClientesController::class, 'store'])->name('salvar_cliente');
+    Route::get('{id}', [App\Http\Controllers\ClientesController::class, 'edit'])->name('editar_cliente');
+    Route::post('{id}', [App\Http\Controllers\ClientesController::class, 'update'])->name('atualizar_cliente');
+    Route::get('/delete/{id}', [App\Http\Controllers\ClientesController::class, 'delete'])->name('deletar_cliente');
 });
